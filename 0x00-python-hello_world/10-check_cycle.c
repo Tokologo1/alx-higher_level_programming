@@ -1,5 +1,5 @@
 #include "lists.h"
-#include <stdio.h">
+#include <stdio.h>
 
 int check_cycle(listint_t *list)
 {
@@ -7,8 +7,8 @@ int check_cycle(listint_t *list)
 	listint_t *head;
 
 	head = list;
-	cursor = list
-	while (cursor != NULL && cursor->next !=NULL)
+	cursor = list;
+	while (cursor != NULL && cursor->next != NULL)
 	{
 		head = head->next;
 		cursor = cursor->next->next;
