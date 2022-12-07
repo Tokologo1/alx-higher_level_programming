@@ -1,72 +1,52 @@
 #include "lists.h"
-
-listint_t *reverse_listint(listint_t **head);
-int is_palindrome(listint_t **head);
-
+#include <stdlib.h>
+#include <stdio.h>
 /**
-* reverse_listint - Reverses a singly-linked listint_t list.
-* @head: A pointer to the starting node of the list to reverse.
-*
-* Return: A pointer to the head of the reversed list.
-*/
-listint_t *reverse_listint(listint_t **head)
-{
-listint_t *node = *head, *next, *prev = NULL;
+ * is_palindrome - check is a linked list is palindrome
+ * @head: head of the list
+ * Return: 0 if not 1 if it is
+ */
 
-while (node)
-{
-next = node->next;
-node->next = prev;
-prev = node;
-node = next;
-}
-
-*head = prev;
-return (*head);
-}
-
-/**
-* is_palindrome - Checks if a singly linked list is a palindrome.
-* @head: A pointer to the head of the linked list.
-*
-* Return: If the linked list is not a palindrome - 0.
-*         If the linked list is a palindrome - 1.
-*/
 int is_palindrome(listint_t **head)
 {
-listint_t *tmp, *rev, *mid;
-size_t size = 0, i;
+	listint_t *current = *head, *prev, *next, *left_head, *right_head;
+	int list_len = 0, i = 0, not_p = 0;
 
-if (*head == NULL || (*head)->next == NULL)
-return (1);
-
-tmp = *head;
-while (tmp)
-{
-size++;
-tmp = tmp->next;
-}
-
-tmp = *head;
-for (i = 0; i < (size / 2) - 1; i++)
-tmp = tmp->next;
-
-if ((size % 2) == 0 && tmp->n != tmp->next->n)
-return (0);
-
-tmp = tmp->next->next;
-rev = reverse_listint(&tmp);
-mid = rev;
-
-tmp = *head;
-while (rev)
-{
-if (tmp->n != rev->n)
-return (0);
-tmp = tmp->next;
-rev = rev->next;
-}
-reverse_listint(&mid);
-
-return (1);
+	if (*head == NULL || head == NULL)
+		return (1);
+	while (current != NULL)
+		list_len++, current = current->next;
+	if (list_len == 1)
+		return (1);
+	current = *head;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
+	{
+		next = current->next;
+		if (prev != NULL)
+			current->next = prev;
+		else
+			current->next = NULL;
+		prev = current, current = next;
+	}
+	right_head = current, left_head = prev;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
+	{
+		if (list_len % 2 != 0 && i == 1)
+			current = current->next;
+		if (current->n != prev->n)
+		{
+			not_p = 1;
+			break;
+		}
+		current = current->next, prev = prev->next;
+	}
+	current = left_head, prev = right_head;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
+	{
+		next = current->next;
+		if (prev != NULL)
+			current->next = prev;
+		prev = current, current = next;
+	}
+	return (not_p == 1 ? 0 : 1);
 }
