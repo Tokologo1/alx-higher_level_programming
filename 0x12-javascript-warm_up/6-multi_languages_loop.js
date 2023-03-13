@@ -1,7 +1,5 @@
 #!/usr/bin/node
 
-// script to print strings using a loop
-
 let i;
 const myString = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
 
