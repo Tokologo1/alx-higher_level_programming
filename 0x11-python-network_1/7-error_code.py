@@ -5,12 +5,11 @@
 import sys
 import request
 
-if _name__ == "__main__":
-  url_link = sys.argv[1]
-  
-  try:
-    response = request.get(url_link)
-    response.raise_for_status()
-    print(response.text)
-  except request.exception.RequestException as e:
-    print(f"Error: {e}")
+if __name__ == "__main__":
+    url_link = sys.argv[1]
+
+    reqst = requests.get(url_link)
+    if r.status_code >= 400:
+        print("Error code: {}".format(reqst.status_code))
+    else:
+        print(reqst.text)
