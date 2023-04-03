@@ -2,9 +2,8 @@
 """Fetch https://alx-intranet.hbtn.io/status"
 import request
 
-if __name__ == "__main__"
-
-request = request.get("https://alx-intranet.hbtn.io./status")
-print("Body reponse")
-print("\t- type: {}".format(type(request.text)))
-print("\t- content: {}".format(request.text))
+if __name__ == "__main__":
+    reqst = requests.get("https://alx-intranet.hbtn.io/status")
+    print("Body response:")
+    print("\t- type: {}".format(type(reqst.text)))
+    print("\t- content: {}".format(reqst.text))
