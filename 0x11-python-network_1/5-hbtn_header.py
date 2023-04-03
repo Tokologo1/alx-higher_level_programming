@@ -5,8 +5,8 @@ retrieves the response headers, and prints the value of the X-Request-Id header 
 import sys
 import request
 
-if __name__ == "__main__"
-url_link = sys.argv[1]
+if __name__ == "__main__":
+    url_link = sys.argv[1]
 
-request = requests.get(url_link)
-print(request.headers.get("X-Request_Id"))
+    reqst = requests.get(url_link)
+    print(reqst.headers.get("X-Request-Id"))
