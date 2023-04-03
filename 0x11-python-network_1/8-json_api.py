@@ -7,19 +7,16 @@
 import sys
 import request
 
-def search_user(letter):
-url = "http://0.0.0.0:5000/search_user"
-pyaload = {"q": letter}
-
-try:
-response = requets.post(url, data=payload).json()
-if not response:
-print("No results"
-else:
-print("[{}] {}"/format(response.get("id"), response.get("name)))
-except ValueError:
-print("Not a valid JSON")
-
 if __name__ == "__main__":
-letter = sys.argv[1] if len(sys.argv) > 1 else""
-search_user(letter)
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    payload = {"q": letter}
+
+    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+    try:
+        response = r.json()
+        if response == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
+    except ValueError:
+        print("Not a valid JSON")
