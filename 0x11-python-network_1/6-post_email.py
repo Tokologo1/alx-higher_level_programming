@@ -3,7 +3,7 @@
 """
 
 import sys
-import request
+import requests
 
 if __name__ == "__main__":
     url_link = sys.argv[1]
