@@ -3,7 +3,7 @@
 retrieves the response headers, and prints the value of the X-Request-Id header variable.
 """
 import sys
-import request
+import requests
 
 if __name__ == "__main__":
     url_link = sys.argv[1]
