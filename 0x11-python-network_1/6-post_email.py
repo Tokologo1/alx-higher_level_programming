@@ -6,8 +6,8 @@ import sys
 import request
 
 if __name__ == "__main__":
-  url_link = sys.argv[1]
-  value = {"email": sys.argv[2]}
-  
-  request = request.post(url, data=value)
-  print(request.text)
+    url_link = sys.argv[1]
+    value = {"email": sys.argv[2]}
+
+    reqst = requests.post(url_link, data=value)
+    print(reqst.text)
