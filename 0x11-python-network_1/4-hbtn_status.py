@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Fetch https://alx-intranet.hbtn.io/status"
 """
-import request
+import requests
 
 if __name__ == "__main__":
     reqst = requests.get("https://alx-intranet.hbtn.io/status")
